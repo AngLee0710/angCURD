@@ -1,0 +1,139 @@
+<%- include header %>
+<nav class="navbar navbar-light bg-light">
+    <a href="/"><span class="navbar-brand mb-0 h1"><%- title %></span></a>
+</nav>
+        <div class="container">
+            <div id="features" class="col-12 row">
+                <div class="col-4">
+                    <button id="new" class="btn btn-primary btn-block">新增</button>
+                </div>
+                <div class="col-4">
+                    <button id="updatePage" class="btn btn-success btn-block">修改</button>
+                </div>
+                <div class="col-4">
+                    <button id="delete" class="btn btn-danger btn-block">刪除</button>
+                </div>
+            </div>
+            <div class="col-12" id="managePage">
+                <table id="myTable" class="table table-responsive-sm table-bordered text-nowrap" width="100%"></table>
+            </div>
+            <div id="newPage" class="row" style="display:none;">
+                    <div class="col-sm-1 col-1"></div>
+                    <div class="col-sm-10 col-10">
+                        <form>
+                            <div class="form-group">
+                                <label for="search1">店家名稱：</label>
+                                <input type="text" class="form-control" name="name" id="name" >
+                            </div>
+                            <div class="form-group">
+                                <label for="search2">店家地址：</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="selectCity" name="selectCity">
+                                            <option value="-1">選擇縣市</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="selectArea" name="selectArea">
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="selectAddress" name="selectAddress" placeholder='輸入路段,例："博愛路187號"'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="search3">店家電話：</label>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder='03-xxxxxxx or 09-xxxxxxxx'>
+                            </div>
+                            <div class="form-group" id="serviceItemDIV">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="search3">店家服務項目</label>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-3">
+                                        <label for="search4">價格</label>                    
+                                    </div>
+                                    <div class="col-2"></div>       
+                                </div>
+                                    <div id="serviceItemChildDIY1" class="row">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control serviceItem">
+                                        </div>
+                                        <div class="col-1"></div>
+                                        <div class="col-3">
+                                                <input type="text" class="form-control servicePrice" placeholder="100-9999">
+                                        </div>
+                                        <div class="col-2">
+                                            <input id="addItem1" class="btn btn-block def-btn btn-warning" style="margin-bottom: 10px;" type="button" value="+" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input id="insert" class="btn btn-block def-btn btn-danger" style="margin-bottom: 10px;" type="button" value="建立" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-3 col-1"></div>
+            </div>
+            <div id="editPage" class="row" style="display:none;">
+                    <div class="col-sm-1 col-1"></div>
+                    <div class="col-sm-10 col-10">
+                        <form>
+                            <div class="form-group">
+                                <label for="search1">店家名稱：</label>
+                                <input type="text" class="form-control" name="name" id="Update_name" >
+                                <input type="hidden" class="form-control" name="id" id="Update_id" >
+                            </div>
+                            <div class="form-group">
+                                <label for="search2">店家地址：</label>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="Update_selectCity" name="selectCity">
+                                            <option value="-1">選擇縣市</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="Update_selectArea" name="selectArea">
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <input type="text" class="form-control" id="Update_selectAddress" name="selectAddress" placeholder='輸入路段,例："博愛路187號"'>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="search3">店家電話：</label>
+                                <input type="text" class="form-control" name="phone" id="Update_phone">
+                            </div>
+                            <div class="form-group" id="Update_serviceItemDIV">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="search3">店家服務項目：</label>
+                                    </div>
+                                    <div class="col-1"></div>
+                                    <div class="col-3">
+                                        <label for="search4">價格：</label>                    
+                                    </div>
+                                    <div class="col-2"></div>       
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input id="update" class="btn btn-block def-btn btn-danger" style="margin-bottom: 10px;" type="button" value="更新" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-3 col-1"></div>
+            </div>
+            <div id="backDIV" class="row" style="display: none;">
+                <div class="col-sm-3 col-8">
+                    <button id="backBtn" class="btn btn-primary btn-block">回上頁</button>
+                </div>
+            </div>
+        </div>
+        <script src="/javascripts/profile.js"></script>
+    </body>
+</html>
+
